@@ -1,6 +1,6 @@
 {
   "name": "@nichoth/socket-test",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "load-test.js",
   "description": "",
   "directories": {
