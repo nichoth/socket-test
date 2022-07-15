@@ -6,7 +6,7 @@ const path = require('path')
 
 const args = process.argv.slice(2)
 
-const configFile = fs.readFileSync(path.resolve(__dirname, '..', 'ssc.config'),
+const configFile = fs.readFileSync(path.resolve(args[0], 'ssc.config'),
     'utf8')
 
 const entries = configFile
