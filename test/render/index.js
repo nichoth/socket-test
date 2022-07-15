@@ -9,6 +9,7 @@ test('app-container exists', async (t) => {
 
   try {
     const container = common.container
+
     t.ok(container, 'the container exists')
     t.ok(document.body.contains(container), 'AppContainer is in the body')
 

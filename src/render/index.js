@@ -270,7 +270,6 @@ class AppContainer extends Tonic {
       <app-header message="woo"></app-header>
       <pre>
         <code>${JSON.stringify(window.process, null, 2)}</code>
-        isTest ??? ${isTest}
       </pre>
       <a href="bad-text">BAD ANCHOR</a>
       <a href="https://example.com">FACEBOOK</a>
@@ -312,17 +311,10 @@ class AppContainer extends Tonic {
 
 Tonic.add(AppContainer)
 
-const isTest = process.argv.includes('--test=1')
+// const isTest = process.argv.includes('--test=1')
 
 window.onload = () => {
-  if (isTest && process.index === 0) {
-    //
-    // If we are in test mode, we pass in the dataLayerCache because we want
-    // the test harness to control it, resetting the data for each test.
-    //
-    loadTest(AppContainer, Tonic)
-    return
-  }
+  loadTest(AppContainer, Tonic)
 
   const app = new AppContainer()
   app.id = 'root'

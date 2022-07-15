@@ -1,4 +1,7 @@
 function loadTest (AppContainer, Tonic) {
+  const isTest = process.argv.includes('--test=1')
+  if (!isTest) return
+
   //
   // We have two bundles, src & test. to avoid duplicate classes
   // shared between two bundles, expose important things as global
