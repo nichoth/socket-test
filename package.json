@@ -2,6 +2,9 @@
   "name": "@nichoth/socket-test",
   "version": "0.0.3",
   "main": "load-test.js",
+  "bin": {
+    "ssct": "./bin/cli.js"
+  },
   "description": "",
   "directories": {
     "test": "test"
@@ -13,6 +16,7 @@
     "postversion": "git push && git push --tags && npm publish"
   },
   "devDependencies": {
+    "comandante": "^0.0.1",
     "esbuild": "^0.14.49",
     "tap-arc": "^0.3.5",
     "tapzero": "^0.6.1"

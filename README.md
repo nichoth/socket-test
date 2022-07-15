@@ -59,7 +59,29 @@ window.onload = () => {
 
 ## use the tests
 
-### 1 - build the application and tests
+### cli use
+This assumes that `ssc` is configured to build the correct binary files. This will call `ssc compile` and then call the compiled binary with the flag `--test`.
+
+#### 1 - install this as a dev dependency
+Install this as a dev dependency: `npm i -D @nichoth/socket-test`
+
+#### 2 - call this CLI
+In this example we are also using the program `tap-arc`, because our tests are written in `tap` format.
+
+Be sure that `ssc.config` is configured correctly, this command line tool depends on it.
+
+It will take a second to start, because we are compiling a new binary before testing.
+
+```
+npx ssct . | npx tap-arc
+```
+
+----------------------------------
+
+
+### programmatic use
+
+#### 1 - build the application and tests
 Create a build script that will compile your app and also the tests
 
 **Note that the tests depend on the target path defined here. You must build the tests with a target of `path.join(target, 'test.js')`**
@@ -89,7 +111,7 @@ Create a build script that will compile your app and also the tests
   })
 ```
 
-### 2 - reference the build script in `ssc.config`
+#### 2 - reference the build script in `ssc.config`
 ```
 #
 # Build Settings
@@ -104,12 +126,12 @@ win_icon: src/icons/icon.ico
 
 ```
 
-### 3 - compile the app
+#### 3 - compile the app
 ```
 ssc compile .
 ```
 
-### 4 - run tests
+#### 4 - run tests
 
 **Note the argument passed in: `--test=1`**. It is used in `load-test.js`
 
