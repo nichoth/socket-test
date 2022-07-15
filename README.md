@@ -111,3 +111,10 @@ ssc compile .
 ```
 ./dist/TestExample-dev.app/Contents/MacOS/test-example-dev --test=1
 ```
+
+## test
+This will run this package on an example application included in this repo, in the `src` folder.
+
+```
+npm test
+```
