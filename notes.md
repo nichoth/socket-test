@@ -37,7 +37,7 @@ function loadTest (AppContainer) {
 
 what this function does is add a script link that points to the test file that we built in the `ssc.config` build process.
 
-We check if you passed in `--test=1` when running the app, and if so, we run `loadTest`.
+We check if you passed in `--test` when running the app, and if so, we run `loadTest`.
 
 
 

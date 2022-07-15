@@ -1,5 +1,5 @@
 function loadTest (AppContainer/*, Tonic*/) {
-  const isTest = process.argv.includes('--test=1')
+  const isTest = process.argv.includes('--test')
   if (!isTest) return false
 
   //
