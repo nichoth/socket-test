@@ -1,6 +1,6 @@
 function loadTest (AppContainer/*, Tonic*/) {
   const isTest = process.argv.includes('--test=1')
-  if (!isTest) return
+  if (!isTest) return false
 
   //
   // We have two bundles, src & test. to avoid duplicate classes
@@ -16,6 +16,8 @@ function loadTest (AppContainer/*, Tonic*/) {
   script.setAttribute('src', 'test.js')
 
   document.body.appendChild(script)
+
+  return true
 }
 
 module.exports = loadTest

@@ -314,9 +314,12 @@ Tonic.add(AppContainer)
 window.onload = () => {
   // must do this to run tests
   // it checks an arg passed in: `--test=1`
-  loadTest(AppContainer, /*Tonic*/)
+  const isTesting = loadTest(AppContainer, /*Tonic*/)
   // this sets AppContainer as a global variable on `window`
   // also sets `Tonic` as a global var
+
+  // don't need to attach the app in this case
+  if (isTesting) return
 
   const app = new AppContainer()
   app.id = 'root'

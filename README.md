@@ -45,10 +45,15 @@ class AppContainer extends Tonic {
 }
 
 window.onload = () => {
+  const isTesting = loadTest(AppContainer)
+  // this sets AppContainer as a global variable on `window`
+
+  // don't need to attach the app in this case
+  if (isTesting) return
+
   const app = new AppContainer()
   app.id = 'root'
   document.body.appendChild(app)
-  loadTest(AppContainer)
 }
 ```
 
