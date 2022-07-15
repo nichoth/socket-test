@@ -6,10 +6,6 @@ let counter = 0
 
 async function main () {
   //
-  // TODO (@heapwolf): need to test rejected promises / failure modes.
-  //
-
-  //
   // ## Example
   // Show one of the windows
   //
