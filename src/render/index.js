@@ -311,10 +311,12 @@ class AppContainer extends Tonic {
 
 Tonic.add(AppContainer)
 
-// const isTest = process.argv.includes('--test=1')
-
 window.onload = () => {
+  // must do this to run tests
+  // it checks an arg passed in: `--test=1`
   loadTest(AppContainer, Tonic)
+  // this sets AppContainer as a global variable on `window`
+  // also sets `Tonic` as a global var
 
   const app = new AppContainer()
   app.id = 'root'

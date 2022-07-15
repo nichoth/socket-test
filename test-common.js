@@ -28,7 +28,8 @@ class TestCommon {
     }
 
     /**
-     * @type {new () => import('@socketsupply/tonic')}
+     * AppContainer is the appContainer component created by the app process
+     * and assigned to window
      */
     const AppContainer = Reflect.get(window, 'TEST_AppContainer')
 
