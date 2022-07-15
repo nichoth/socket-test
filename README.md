@@ -11,6 +11,7 @@ npm i -D socket-node-tonic-test
 ```
 
 ## Write some tests
+You must build this file to the right path, and call [loadTest](#call-load-test-in-application-code) in the app code.
 
 ```js
 // test/render/index.js
