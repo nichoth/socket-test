@@ -32,6 +32,8 @@ sscCmd.on('exit', () => {
 
     // TODO -- why is '-dev' appended to the end of the executable name???
     
+    // TODO -- can use ssc 'print dir' command
+    
     run('./dist/TestExample-dev.app/Contents/' + dir + '/' + exeName + '-dev',
         ['--test']).pipe(process.stdout)
 })
