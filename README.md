@@ -2,7 +2,7 @@
 
 How do I test the application I'm making?
 
-There are **two key elements** -- the path you choose for building the tests, and the arugments you call the final application with. You must must build the tests to the right path, and you must call the compiled program with an argument `--test=1`.
+There are **two key elements** -- the path you choose for building the tests, and the arugments you call the final application with. You must must build the tests to the right path, and you must call the compiled program with an argument, `--test=1`.
 
 ## install
 
@@ -19,6 +19,8 @@ const TestCommon = require('socket-node-tonic-test/test-common.js')
 
 test('app-container exists', async (t) => {
   const common = await TestCommon.create()
+  // `container` is whatever you passed in to `loadTest` in the
+  // application code
   const container = common.container
 
   t.ok(container, 'the container exists')
