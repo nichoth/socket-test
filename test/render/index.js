@@ -2,7 +2,7 @@
 'use strict'
 
 const { test } = require('tapzero')
-const TestCommon = require('./test-common.js')
+const TestCommon = require('../../test-common.js')
 
 test('app-container exists', async (t) => {
   const common = await TestCommon.create()

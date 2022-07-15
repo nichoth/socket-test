@@ -3,6 +3,7 @@
 
 const Tonic = require('@socketsupply/tonic')
 const Components = require('@socketsupply/components')
+const loadTest = require('../../load-test')
 
 Components(Tonic)
 
@@ -330,7 +331,7 @@ window.onload = () => {
     // If we are in test mode, we pass in the dataLayerCache because we want
     // the test harness to control it, resetting the data for each test.
     //
-    loadTest(AppContainer)
+    loadTest(AppContainer, Tonic)
     return
   }
 
@@ -341,18 +342,18 @@ window.onload = () => {
   document.body.appendChild(app)
 }
 
-function loadTest (AppContainer) {
-  //
-  // We have two bundles, src & test. to avoid duplicate classes
-  // shared between two bundles, expose important things as global
-  // variables.
-  //
-  Reflect.set(window, 'TEST_AppContainer', AppContainer)
-  Reflect.set(window, 'TEST_Tonic', Tonic)
+// function loadTest (AppContainer) {
+//   //
+//   // We have two bundles, src & test. to avoid duplicate classes
+//   // shared between two bundles, expose important things as global
+//   // variables.
+//   //
+//   Reflect.set(window, 'TEST_AppContainer', AppContainer)
+//   Reflect.set(window, 'TEST_Tonic', Tonic)
 
-  const script = document.createElement('script')
-  script.setAttribute('type', 'text/javascript')
-  script.setAttribute('src', 'test.js')
+//   const script = document.createElement('script')
+//   script.setAttribute('type', 'text/javascript')
+//   script.setAttribute('src', 'test.js')
 
-  document.body.appendChild(script)
-}
+//   document.body.appendChild(script)
+// }
