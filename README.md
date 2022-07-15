@@ -1,4 +1,4 @@
-# socket node test
+# socket test
 
 How do I test the application I'm making?
 
@@ -7,7 +7,7 @@ There are **two key elements** -- the path you choose for building the tests, an
 ## install
 
 ```
-npm i -D socket-node-test
+npm i -D socket-test
 ```
 
 ## Write some tests
@@ -16,7 +16,7 @@ You must build this file to the right path, and call [loadTest](#call-load-test-
 ```js
 // test/render/index.js
 const { test } = require('tapzero')
-const TestCommon = require('socket-node-test/test-common.js')
+const TestCommon = require('socket-test/test-common.js')
 
 test('app-container exists', async (t) => {
   const common = await TestCommon.create()
@@ -35,7 +35,7 @@ test('app-container exists', async (t) => {
 **Note that this depends on the [build step](#1---build-the-application-and-tests) above. You must build the tests with a target of path.join(target, 'test.js')**
 
 ```js
-const loadTest = require('socket-node-test/load-test')
+const loadTest = require('socket-test/load-test')
 
 class AppContainer extends Tonic {
     // ...
