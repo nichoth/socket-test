@@ -45,11 +45,10 @@ class AppContainer extends Tonic {
 }
 
 window.onload = () => {
-  loadTest(AppContainer)
-
   const app = new AppContainer()
   app.id = 'root'
   document.body.appendChild(app)
+  loadTest(AppContainer)
 }
 ```
 
