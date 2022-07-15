@@ -139,7 +139,7 @@ ssc compile .
 **Note the argument passed in: `--test`**. It is used in `load-test.js`
 
 ```
-./dist/TestExample-dev.app/Contents/MacOS/test-example-dev --test=1
+./dist/TestExample-dev.app/Contents/MacOS/test-example-dev --test
 ```
 
 ## test
