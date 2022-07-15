@@ -70,7 +70,7 @@ Install this as a dev dependency: `npm i -D @nichoth/socket-test`
 #### 2 - call this CLI
 In this example we are also using the program `tap-arc`, because our tests are written in `tap` format.
 
-Be sure that `ssc.config` is configured correctly, this command line tool depends on it.
+Be sure that `ssc.config` is configured correctly; this command line tool depends on it.
 
 It will take a second to start, because we are compiling a new binary before testing.
 
