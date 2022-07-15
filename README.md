@@ -10,7 +10,7 @@ There are **two key elements** -- the path you choose for building the tests, an
 ## install
 
 ```
-npm i -D socket-test
+npm i -D @nichoth/socket-test
 ```
 
 ## Write some tests
@@ -19,7 +19,7 @@ You must build this file to the right path, and call [loadTest](#call-load-test-
 ```js
 // test/render/index.js
 const { test } = require('tapzero')
-const TestCommon = require('socket-test/test-common.js')
+const TestCommon = require('@nichoth/socket-test/test-common.js')
 
 test('app-container exists', async (t) => {
   const common = await TestCommon.create()
@@ -38,7 +38,7 @@ test('app-container exists', async (t) => {
 **Note that this depends on the [build step](#1---build-the-application-and-tests). You must build the tests with a target of path.join(target, 'test.js')**
 
 ```js
-const loadTest = require('socket-test/load-test')
+const loadTest = require('@nichoth/socket-test/load-test')
 
 class AppContainer extends Tonic {
     // ...

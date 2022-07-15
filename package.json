@@ -1,5 +1,5 @@
 {
-  "name": "socket-node-tonic-test",
+  "name": "@nichoth/socket-test",
   "version": "0.0.0",
   "main": "load-test.js",
   "description": "",
@@ -23,12 +23,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nichoth/socket-node-tonic-test.git"
+    "url": "git+https://github.com/nichoth/socket-test.git"
   },
   "author": "nichoth",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nichoth/socket-node-tonic-test/issues"
+    "url": "https://github.com/nichoth/socket-test/issues"
   },
-  "homepage": "https://github.com/nichoth/socket-node-tonic-test#readme"
+  "homepage": "https://github.com/nichoth/socket-test#readme"
 }
