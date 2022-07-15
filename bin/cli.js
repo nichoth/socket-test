@@ -18,6 +18,7 @@ const config = Object.fromEntries(entries)
 
 const sscCmd = spawn('ssc', ['compile', args[0]])
 
+// TODO -- handle more cases of platform
 let dir = ''
 switch (process.platform) {
     case 'darwin':
