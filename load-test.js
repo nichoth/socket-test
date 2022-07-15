@@ -1,4 +1,4 @@
-function loadTest (AppContainer, Tonic) {
+function loadTest (AppContainer/*, Tonic*/) {
   const isTest = process.argv.includes('--test=1')
   if (!isTest) return
 
@@ -8,7 +8,7 @@ function loadTest (AppContainer, Tonic) {
   // variables.
   //
   Reflect.set(window, 'TEST_AppContainer', AppContainer)
-  Reflect.set(window, 'TEST_Tonic', Tonic)
+  // Reflect.set(window, 'TEST_Tonic', Tonic)
 
   // add a script tag to the html here
   const script = document.createElement('script')

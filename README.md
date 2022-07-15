@@ -1,4 +1,4 @@
-# socket node tonic test
+# socket node test
 
 How do I test the application I'm making?
 
