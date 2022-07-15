@@ -8,12 +8,13 @@
   },
   "scripts": {
     "start": "ssc compile -r .",
-    "test": "npm run build && ./dist/TestExample-dev.app/Contents/MacOS/test-example-dev --test",
+    "test": "npm run build && ./dist/TestExample-dev.app/Contents/MacOS/test-example-dev --test | tap-arc",
     "build": "ssc compile .",
     "postversion": "git push && git push --tags && npm publish"
   },
   "devDependencies": {
     "esbuild": "^0.14.49",
+    "tap-arc": "^0.3.5",
     "tapzero": "^0.6.1"
   },
   "dependencies": {
