@@ -60,6 +60,8 @@ window.onload = () => {
 ## use the tests
 
 ### cli use
+The CLI is called `ssct`, which stands for "socket supply company test".
+
 This assumes that `ssc` is configured to build the correct binary files. This will call `ssc compile` and then call the compiled binary with the flag `--test`.
 
 #### 1 - install this as a dev dependency
@@ -72,6 +74,7 @@ Be sure that `ssc.config` is configured correctly, this command line tool depend
 
 It will take a second to start, because we are compiling a new binary before testing.
 
+##### example
 ```
 npx ssct . | npx tap-arc
 ```
