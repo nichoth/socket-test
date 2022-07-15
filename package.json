@@ -1,7 +1,10 @@
 {
   "name": "@nichoth/socket-test",
-  "version": "0.0.3",
+  "version": "0.1.3",
   "main": "load-test.js",
+  "bin": {
+    "ssct": "./bin/cli.js"
+  },
   "description": "",
   "directories": {
     "test": "test"
@@ -9,6 +12,7 @@
   "scripts": {
     "start": "ssc compile -r .",
     "test": "npm run build && ./dist/TestExample-dev.app/Contents/MacOS/test-example-dev --test | tap-arc",
+    "test-cli": "./bin/cli.js . | tap-arc",
     "build": "ssc compile .",
     "postversion": "git push && git push --tags && npm publish"
   },
@@ -20,7 +24,8 @@
   "dependencies": {
     "@socketsupply/components": "^13.2.19",
     "@socketsupply/ssc-node": "^1.7.2",
-    "@socketsupply/tonic": "^14.1.5"
+    "@socketsupply/tonic": "^14.1.5",
+    "comandante": "^0.0.1"
   },
   "repository": {
     "type": "git",
