@@ -51,19 +51,19 @@ async function main () {
 
   await cp('src/render/index.html', target)
 
-  let ext = ''
+  // let ext = ''
 
-  switch (process.platform) {
-    case 'win32':
-      ext = 'ico'
-      // await cp(`src/icons/icon.png`, target)
-      break;
-    case 'linux':
-      ext = 'png'
-      break
-    case 'darwin':
-      ext = 'icns'
-  }
+  // switch (process.platform) {
+  //   case 'win32':
+  //     ext = 'ico'
+  //     // await cp(`src/icons/icon.png`, target)
+  //     break;
+  //   case 'linux':
+  //     ext = 'png'
+  //     break
+  //   case 'darwin':
+  //     ext = 'icns'
+  // }
 
   // await cp(`src/icons/icon.${ext}`, target)
 }
