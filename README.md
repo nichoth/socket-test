@@ -33,7 +33,7 @@ test('app-container exists', async (t) => {
 ```
 
 ## call `load-test` in application code
-`load-test.js` should be called in your appliceation code
+`load-test.js` should be called in your application code
 
 **Note that this depends on the [build step](#1---build-the-application-and-tests). You must build the tests with a target of path.join(target, 'test.js')**
 
