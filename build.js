@@ -1,8 +1,8 @@
 const path = require('path')
 const fs = require('fs/promises')
 
-const CleanCSS = require('clean-css')
-const stylus = require('stylus')
+// const CleanCSS = require('clean-css')
+// const stylus = require('stylus')
 const esbuild = require('esbuild')
 
 //
@@ -16,20 +16,20 @@ if (!target) {
   process.exit(1)
 }
 
-const css = async (src, dest) => {
-  const cleanCSS = new CleanCSS({ advanced: true })
-  const s = await fs.readFile(src, 'utf8')
+// const css = async (src, dest) => {
+//   // const cleanCSS = new CleanCSS({ advanced: true })
+//   const s = await fs.readFile(src, 'utf8')
 
-  const css = await new Promise((resolve, reject) => {
-    return stylus.render(s, { filename: src }, (err, css) => {
-      if (err) return reject(err)
-      return resolve(css)
-    })
-  })
+//   const css = await new Promise((resolve, reject) => {
+//     return stylus.render(s, { filename: src }, (err, css) => {
+//       if (err) return reject(err)
+//       return resolve(css)
+//     })
+//   })
 
-  const minified = cleanCSS.minify(css)
-  return fs.writeFile(dest, minified.styles)
-}
+//   // const minified = cleanCSS.minify(css)
+//   // return fs.writeFile(dest, minified.styles)
+// }
 
 const cp = async (a, b) => fs.copyFile(
   path.resolve(a),
@@ -65,10 +65,10 @@ async function main () {
     platform: 'node'
   })
 
-  await css(
-    path.join('src', 'render/index.styl'),
-    path.join(target, 'bundle.css')
-  )
+  // await css(
+  //   path.join('src', 'render/index.styl'),
+  //   path.join(target, 'bundle.css')
+  // )
 
   // TODO Since we don't have ASAR, why not GZip?
 
@@ -79,7 +79,7 @@ async function main () {
   switch (process.platform) {
     case 'win32':
       ext = 'ico'
-      await cp(`src/icons/icon.png`, target)
+      // await cp(`src/icons/icon.png`, target)
       break;
     case 'linux':
       ext = 'png'
@@ -88,7 +88,7 @@ async function main () {
       ext = 'icns'
   }
 
-  await cp(`src/icons/icon.${ext}`, target)
+  // await cp(`src/icons/icon.${ext}`, target)
 }
 
 main()
