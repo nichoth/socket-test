@@ -4,7 +4,7 @@ How do I test the application I'm making?
 
 There are **two key elements** -- the path you choose for building the tests, and the arugments you call the final application with. You must must build the tests to the right path, and you must call the compiled program with an argument,
 ```
---test=1
+--test
 ```
 
 ## install
@@ -133,7 +133,7 @@ ssc compile .
 
 #### 4 - run tests
 
-**Note the argument passed in: `--test=1`**. It is used in `load-test.js`
+**Note the argument passed in: `--test`**. It is used in `load-test.js`
 
 ```
 ./dist/TestExample-dev.app/Contents/MacOS/test-example-dev --test=1
