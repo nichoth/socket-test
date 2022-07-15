@@ -26,9 +26,6 @@ switch (process.platform) {
 }
 const exeName = config.executable
 
-// TODO
-// get the executable name from ssc.config: executable: test-example
-
 sscCmd.on('exit', () => {
     // now run the tests
     // './dist/TestExample-dev.app/Contents/MacOS/test-example-dev'
