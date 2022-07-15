@@ -6,6 +6,7 @@ const TestCommon = require('../../test-common.js')
 
 test('app-container exists', async (t) => {
   const common = await TestCommon.create()
+
   try {
     const container = common.container
     t.ok(container, 'the container exists')

@@ -1,4 +1,11 @@
 {
+  "name": "socket-node-tonic-test",
+  "version": "0.0.0",
+  "main": "load-test.js",
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "start": "ssc compile -r .",
     "build": "ssc compile ."
@@ -11,5 +18,15 @@
     "@socketsupply/components": "^13.2.19",
     "@socketsupply/ssc-node": "^1.7.2",
     "@socketsupply/tonic": "^14.1.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nichoth/socket-node-tonic-test.git"
+  },
+  "author": "nichoth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nichoth/socket-node-tonic-test/issues"
+  },
+  "homepage": "https://github.com/nichoth/socket-node-tonic-test#readme"
 }

@@ -7,22 +7,9 @@ const loadTest = require('../../load-test')
 
 Components(Tonic)
 
-const isTest = process.argv.includes('--test=1')
-
 let elementDraggingIndicator
 let elementUnderDrag
 let lastElementUnderDrag
-
-// function setBackgroundColor () {
-//   const styles = getComputedStyle(document.body)
-//   let hex = styles.getPropertyValue('--tonic-window').slice(1)
-//   let [red, green = red, blue = green] = hex.match(/\w\w/g).map(s => parseInt(s, 16))
-
-//   window.parent.setBackgroundColor({ red, green, blue, alpha: 1 })
-// }
-
-// window.matchMedia("(prefers-color-scheme: dark)")
-//   .addListener(setBackgroundColor)
 
 window.addEventListener('contextmenu', e => {
   if (!process.debug) {
@@ -325,6 +312,8 @@ class AppContainer extends Tonic {
 
 Tonic.add(AppContainer)
 
+const isTest = process.argv.includes('--test=1')
+
 window.onload = () => {
   if (isTest && process.index === 0) {
     //
@@ -335,25 +324,7 @@ window.onload = () => {
     return
   }
 
-  // setBackgroundColor()
-
   const app = new AppContainer()
   app.id = 'root'
   document.body.appendChild(app)
 }
-
-// function loadTest (AppContainer) {
-//   //
-//   // We have two bundles, src & test. to avoid duplicate classes
-//   // shared between two bundles, expose important things as global
-//   // variables.
-//   //
-//   Reflect.set(window, 'TEST_AppContainer', AppContainer)
-//   Reflect.set(window, 'TEST_Tonic', Tonic)
-
-//   const script = document.createElement('script')
-//   script.setAttribute('type', 'text/javascript')
-//   script.setAttribute('src', 'test.js')
-
-//   document.body.appendChild(script)
-// }
