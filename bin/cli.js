@@ -33,8 +33,27 @@ sscCmd.on('exit', () => {
     
     // TODO -- can use ssc command to print the dir instead of constructing
     //   a string like we are doing here
-    
-    run('./dist/TestExample-dev.app/Contents/' + dir + '/' + exeName + '-dev',
-        ['--test'])
+
+
+    run('./dist/TestExample-dev.app/Contents/' + dir + '/' + exeName +
+        '-dev', ['--test'])
         .pipe(process.stdout)
+
+
+    // getBuildTarget().then(target => {
+    //     console.log('*got target*', target)
+
+    //     // *got target* dist/TestExample-dev.app/Contents/Resources
+    //     // TODO -- why does the target here have a directory `Resources`?
+    //     //  but in the code we don't use `Resources`
+    // })
 })
+
+function getBuildTarget () {
+    const cmd = spawn('ssc', ['print-build-target', '.'])
+    return new Promise((resolve) => {
+        cmd.stdout.on('data', d => {
+            resolve(d.toString())
+        })
+    })
+}
