@@ -9,12 +9,11 @@ const args = process.argv.slice(2)
 const configFile = fs.readFileSync(path.resolve(args[0], 'ssc.config'),
     'utf8')
 
-const entries = configFile
+const config = Object.fromEntries(configFile
   .split('\n')
   .filter((line) => line.length && !/^#/.test(line))
   .map((line) => line.split(/:(.*)$/).map(s => s.trim()))
-
-const config = Object.fromEntries(entries)
+)
 
 const sscCmd = spawn('ssc', ['compile', args[0]])
 
