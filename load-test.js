@@ -1,4 +1,4 @@
-function loadTest (AppContainer/*, Tonic*/) {
+function loadTest (getAppContainer) {
   const isTest = process.argv.includes('--test')
   if (!isTest) return false
 
@@ -7,11 +7,10 @@ function loadTest (AppContainer/*, Tonic*/) {
   // shared between two bundles, expose important things as global
   // variables.
   //
-  Reflect.set(window, 'TEST_AppContainer', () => {
-    return new AppContainer()
-  })
 
-  // add a script tag to the html here
+  Reflect.set(window, 'TEST_AppContainer', getAppContainer())
+
+  // add a script tag to the html
   const script = document.createElement('script')
   script.setAttribute('type', 'text/javascript')
   script.setAttribute('src', 'test.js')

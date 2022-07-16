@@ -33,7 +33,8 @@ class TestCommon {
      */
     const AppContainer = Reflect.get(window, 'TEST_AppContainer')
 
-    this.container = AppContainer()
+    // this.container = AppContainer()
+    this.container = AppContainer
     this.container.id = 'app-container'
 
     document.body.appendChild(this.container)
