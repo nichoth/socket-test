@@ -88,3 +88,28 @@ This will run this package on an example application included in this repo, in t
 ```
 npm test
 ```
+
+### test the CLI
+
+```
+npm run test-cli
+```
+
+This calls `/bin/cli.js` with one argument, `.`, for the current directory.
+
+
+#### test the CLI with a failing exit code
+
+This is less automated. Since this depends on the build path for the compiled test file, in `build.js`, you must change the test's build script so that it points to `test/render/fail.js`
+
+```js
+  await esbuild.build({
+    entryPoints: ['test/render/fail.js'],
+    bundle: true,
+    keepNames: true,
+    outfile: path.join(target, 'test.js'),
+    platform: 'browser'
+  })
+```
+
+then run `npm run test-cli`, and check the exit code of the last command: `echo $?`. It should print `1`.
