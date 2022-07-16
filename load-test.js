@@ -7,12 +7,9 @@ function loadTest (AppContainer/*, Tonic*/) {
   // shared between two bundles, expose important things as global
   // variables.
   //
-
-  // Reflect.set(window, 'TEST_AppContainer', AppContainer)
   Reflect.set(window, 'TEST_AppContainer', () => {
     return new AppContainer()
   })
-  // Reflect.set(window, 'TEST_Tonic', Tonic)
 
   // add a script tag to the html here
   const script = document.createElement('script')
