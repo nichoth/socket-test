@@ -17,16 +17,6 @@ class TestCommon {
   }
 
   async bootstrap () {
-    // const Tonic = Reflect.get(window, 'TEST_Tonic')
-
-    /**
-     * Since we are setting up a new component we want to
-     * reset the global state cached in Tonic
-     */
-    // for (const key of Object.keys(Tonic._states)) {
-    //   delete Tonic._states[key]
-    // }
-
     /**
      * AppContainer is the appContainer component created by the app process
      * and assigned to window
