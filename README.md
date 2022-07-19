@@ -46,7 +46,8 @@ class AppContainer extends Tonic {
 
 window.onload = () => {
   // this sets AppContainer as a global variable on `window`
-  const isTesting = loadTest(AppContainer)
+  // pass in a function that returns your app container
+  const isTesting = loadTest(() => (new AppContainer()))
 
   // don't need to attach the app in this case
   if (isTesting) return
@@ -70,7 +71,7 @@ Install this as a dev dependency: `npm i -D @nichoth/socket-test`
 #### 2 - call this CLI
 In this example we are also using the program `tap-arc`, because our tests are written in `tap` format.
 
-Be sure that `ssc.config` is configured correctly; this command line tool depends on it.
+Be sure that `ssc.config` is configured correctly; the command line tool depends on it.
 
 It will take a second to start, because we are compiling a new binary before testing.
 
@@ -82,7 +83,7 @@ npx ssct . | npx tap-arc
 ----------------------------------
 
 
-## test
+## test this package
 This will run this package on an example application included in this repo, in the `src` folder.
 
 ```
@@ -100,7 +101,7 @@ This calls `/bin/cli.js` with one argument, `.`, for the current directory.
 
 #### test the CLI with a failing exit code
 
-This is less automated. Since this depends on the build path for the compiled test file, in `build.js`, you must change the test's build script so that it points to `test/render/fail.js`
+This is less automated. Since this depends on the build path for the compiled test file, in `build.js`, you must change the test's build script so that it points to `test/render/fail.js` as the source:
 
 ```js
   await esbuild.build({
