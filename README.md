@@ -38,7 +38,9 @@ test('app-container exists', async (t) => {
 **Note that this depends on the [build step](#build-the-application-and-tests). You must build the tests with a target of path.join(target, 'test.js')**
 
 ```js
+// src/render/index.js
 const loadTest = require('@nichoth/socket-test/load-test')
+const Tonic = require('@socketsupply/tonic')
 
 class AppContainer extends Tonic {
     // ...
