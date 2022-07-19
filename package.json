@@ -1,6 +1,6 @@
 {
   "name": "@nichoth/socket-test",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "main": "load-test.js",
   "bin": {
     "ssct": "./bin/cli.js"
