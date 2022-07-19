@@ -35,7 +35,7 @@ test('app-container exists', async (t) => {
 ## call `load-test` in application code
 `load-test.js` should be called in your application code
 
-**Note that this depends on the [build step](#1---build-the-application-and-tests). You must build the tests with a target of path.join(target, 'test.js')**
+**Note that this depends on the [build step](build-the-application-and-tests). You must build the tests with a target of path.join(target, 'test.js')**
 
 ```js
 const loadTest = require('@nichoth/socket-test/load-test')
@@ -58,12 +58,29 @@ window.onload = () => {
 }
 ```
 
+## build the application and tests
+In `ssc.config`, be sure that the `build` script calls a script that will
+build the tests in addition to the app.
+
+```js
+  await esbuild.build({
+    entryPoints: ['test/render/index.js'],
+    bundle: true,
+    keepNames: true,
+    // minify: true,
+    outfile: path.join(target, 'test.js'),
+    platform: 'browser'
+  })
+```
+
+
 ## use the tests
 
 ### cli use
 The CLI is called `ssct`, which stands for "socket supply company test".
 
-This assumes that `ssc` is configured to build the correct binary files. This will call `ssc compile` and then call the compiled binary with the flag `--test`.
+The CLI does two things -- compiles the app as defined in `ssc.config`, and
+calls the compiled binary with the argument `--test`, which will run the tests. (This argument is something that `load-test.js` looks for.)
 
 #### 1 - install this as a dev dependency
 Install this as a dev dependency: `npm i -D @nichoth/socket-test`
