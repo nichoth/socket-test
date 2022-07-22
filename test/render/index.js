@@ -1,14 +1,17 @@
 // @ts-check
 'use strict'
+const sleep = require('../../sleep')
 
 const { test } = require('tapzero')
-const TestCommon = require('../../test-common.js')
+// const TestCommon = require('../../test-common.js')
+const Harness = require('../../harness')
 
 test('app-container exists', async (t) => {
-  const common = await TestCommon.create()
+  // const common = await TestCommon.create()
+  const harness = await Harness.create()
 
   try {
-    const container = common.container
+    const container = harness.container
 
     t.ok(container, 'the container exists')
     t.ok(document.body.contains(container), 'AppContainer is in the body')
@@ -24,10 +27,6 @@ test('app-container exists', async (t) => {
     const receiveElem = container.querySelector('#response')
     t.equal(receiveElem.value, 'hello', 'a response was received over IPC')
   } finally {
-    await common.close()
+    await harness.close()
   }
 })
-
-async function sleep (ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}

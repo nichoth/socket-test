@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "ssc compile -r .",
-    "test": "npm run build && ./dist/TestExample-dev.app/Contents/MacOS/test-example-dev --test | tap-arc",
+    "test": "./dist/TestExample-dev.app/Contents/MacOS/test-example-dev --test | tap-arc",
     "test-cli": "./bin/cli.js . | tap-arc",
     "build": "ssc compile .",
     "postversion": "git push && git push --tags && npm publish"

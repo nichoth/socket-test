@@ -31,10 +31,18 @@ class TestHarness {
 
     document.body.appendChild(this.container)
 
-    // /**
-    //  * Wait for an async render() to hopefully complete.
-    //  */
+    /**
+     * Wait for an async render() to hopefully complete.
+     */
     await sleep(1)
+  }
+
+  close () {
+    if (this.container && document.body.contains(this.container)) {
+      document.body.removeChild(this.container)
+    }
+
+    this.container = null
   }
 
   patchConsole () {
@@ -48,6 +56,9 @@ class TestHarness {
         }]
       })
     }
+
+    window.addEventListener('error', handleWindowError)
+    window.addEventListener('unhandledrejection', handleWindowUnhandled)
   }
 }
 
@@ -55,8 +66,44 @@ module.exports = TestHarness
 
 
 
+/**
+ * @param {ErrorEvent} event
+ */
+function handleWindowError (event) {
+  const err = {
+    message: (event.error || event).message,
+    stack: (event.error || event).stack
+  }
+
+  system.send({
+    api: 'ssc-node',
+    method: 'testUncaught',
+    arguments: [{
+      err: err,
+      type: 'error'
+    }]
+  })
+}
 
 
+/**
+ * @param {PromiseRejectionEvent} event
+ */
+function handleWindowUnhandled (event) {
+  const err = {
+    message: event.reason.message || event.reason,
+    stack: event.reason.stack
+  }
+
+  system.send({
+    api: 'ssc-node',
+    method: 'testUncaught',
+    arguments: [{
+      err: err,
+      type: 'unhandledrejection'
+    }]
+  })
+}
 
 
 

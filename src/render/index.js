@@ -11,6 +11,8 @@ let elementDraggingIndicator
 let elementUnderDrag
 let lastElementUnderDrag
 
+const { system } = window
+
 window.addEventListener('contextmenu', e => {
   if (!process.debug) {
     e.preventDefault()
@@ -163,7 +165,7 @@ class AppContainer extends Tonic {
 
   onData (event) {
     if (event.detail.env) {
-      console.log(event)
+      console.log('*data*', event)
       return
     }
 
@@ -311,16 +313,20 @@ class AppContainer extends Tonic {
 
 Tonic.add(AppContainer)
 
-window.onload = () => {
+// window.onload = () => {
   // must do this to run tests
   // it checks an arg passed in: `--test`
   // sets AppContainer as a global variable on `window`
   const isTesting = loadTest(() => (new AppContainer()))
 
-  // don't need to attach the app in this case
-  if (isTesting) return
+  console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', isTesting)
 
-  const app = new AppContainer()
-  app.id = 'root'
-  document.body.appendChild(app)
-}
+  // don't need to attach the app in this case
+  // if (isTesting) return
+  if (!isTesting) {
+    const app = new AppContainer()
+    app.id = 'root'
+    document.body.appendChild(app)
+  }
+
+// }

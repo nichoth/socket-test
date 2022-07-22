@@ -1,5 +1,8 @@
 function loadTest (getAppContainer) {
   const isTest = process.argv.includes('--test')
+
+  console.log('***is test***', isTest)
+
   if (!isTest) return false
 
   //
@@ -10,7 +13,7 @@ function loadTest (getAppContainer) {
 
   Reflect.set(window, 'TEST_AppContainer', getAppContainer())
 
-  // add a script tag to the html
+  // add script tag to the html
   const script = document.createElement('script')
   script.setAttribute('type', 'text/javascript')
   script.setAttribute('src', 'test.js')
