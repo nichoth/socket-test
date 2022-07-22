@@ -2,7 +2,6 @@
 'use strict'
 
 const { test } = require('tapzero')
-// const TestCommon = require('../../test-common.js')
 const Harness = require('../../harness')
 
 test('app-container exists', async (t) => {
