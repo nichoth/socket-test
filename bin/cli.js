@@ -23,7 +23,6 @@ switch (process.platform) {
     case 'darwin':
         dir = 'MacOS'
 }
-const exeName = config.executable
 
 sscCmd.on('exit', () => {
     // now run the tests
@@ -33,6 +32,8 @@ sscCmd.on('exit', () => {
     
     // TODO -- can use ssc command to print the dir instead of constructing
     //   a string like we are doing here
+
+    const exeName = config.executable
     
     run('./dist/TestExample-dev.app/Contents/' + dir + '/' + exeName + '-dev',
         ['--test'])
