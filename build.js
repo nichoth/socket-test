@@ -9,7 +9,7 @@ const esbuild = require('esbuild')
 const target = path.resolve(process.argv[2]);
 
 if (!target) {
-  console.log('  - Did not receive the build target path as an argument')
+  console.log(' - Did not receive the build target path as an argument')
   process.exit(1)
 }
 

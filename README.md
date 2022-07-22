@@ -7,6 +7,8 @@ There are **two key elements** -- the path you choose for building the tests, an
 --test
 ```
 
+There is also `@socketsupply/-base` & `@socketsupply/-base-cli` that can build an app. This is different because it is decoupled from a build process.
+
 ## install
 
 ```
@@ -19,10 +21,10 @@ You must build this file to the right path, and call [loadTest](#call-load-test-
 ```js
 // test/render/index.js
 const { test } = require('tapzero')
-const TestCommon = require('@nichoth/socket-test/test-common.js')
+const Harness = require('@nichoth/socket-test/harness')
 
 test('app-container exists', async (t) => {
-  const common = await TestCommon.create()
+  const harness = await Harness.create()
   // `container` is whatever you passed in to `loadTest` in the
   // application code
   const container = common.container
