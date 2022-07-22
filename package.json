@@ -18,6 +18,8 @@
   },
   "devDependencies": {
     "@socketsupply/-base": "1.12.0",
+    "@socketsupply/-base-cli": "1.8.12",
+    "@types/node": "18.0.6",
     "esbuild": "^0.14.49",
     "tap-arc": "^0.3.5",
     "tapzero": "^0.6.1"
@@ -37,6 +39,18 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nichoth/socket-test/issues"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "sourceType": "script"
+    },
+    "rules": {
+      "no-console": "error",
+      "strict": [
+        "error",
+        "global"
+      ]
+    }
   },
   "homepage": "https://github.com/nichoth/socket-test#readme"
 }
