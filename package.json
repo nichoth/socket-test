@@ -25,7 +25,8 @@
     "@socketsupply/components": "^13.2.19",
     "@socketsupply/ssc-node": "^1.7.2",
     "@socketsupply/tonic": "^14.1.5",
-    "comandante": "^0.0.1"
+    "comandante": "^0.0.1",
+    "json-stringify-safe": "^5.0.1"
   },
   "repository": {
     "type": "git",
