@@ -1,9 +1,9 @@
 // @ts-check
 'use strict'
 
+const stringify = require('json-stringify-safe')
 const system = window.system
-
-monkeyPatchConsole()
+const sleep = require('./sleep')
 
 class TestCommon {
   static async create () {
@@ -34,6 +34,22 @@ class TestCommon {
     await sleep(1)
   }
 
+  static PatchConsole () {
+    // eslint-disable-next-line
+    console.log = (...args) => {
+      system.send({
+        api: 'ssc-node',
+        method: 'testConsole',
+        arguments: [{
+          args: stringify(args)
+        }]
+      })
+    }
+
+    window.addEventListener('error', handleWindowError)
+    window.addEventListener('unhandledrejection', handleWindowUnhandled)
+  }
+
   close () {
     if (this.container && document.body.contains(this.container)) {
       document.body.removeChild(this.container)
@@ -43,72 +59,44 @@ class TestCommon {
   }
 }
 
+TestCommon.PatchConsole()
+
 module.exports = TestCommon
 
-async function sleep (ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+/**
+ * @param {ErrorEvent} event
+ */
+function handleWindowError (event) {
+  const err = {
+    message: (event.error || event).message,
+    stack: (event.error || event).stack
+  }
+
+  system.send({
+    api: 'ssc-node',
+    method: 'testUncaught',
+    arguments: [{
+      err: err,
+      type: 'error'
+    }]
+  })
 }
 
-function monkeyPatchConsole () {
-  const oldLog = console.log
-  console.log = hookLog
-
-  let counter = 1
-  window.addEventListener('error', handleWindowError)
-  window.addEventListener('unhandledrejection', handleWindowUnhandled)
-
-  /**
-   * @param {ErrorEvent} event
-   */
-  function handleWindowError (event) {
-    const err = {
-      counter: counter++,
-      message: (event.error || event).message,
-      stack: (event.error || event).stack
-    }
-
-    system.send({
-      api: 'ssc-node',
-      method: 'testUncaught',
-      arguments: [{
-        err: err,
-        type: 'error'
-      }]
-    })
+/**
+ * @param {PromiseRejectionEvent} event
+ */
+function handleWindowUnhandled (event) {
+  const err = {
+    message: event.reason.message || event.reason,
+    stack: event.reason.stack
   }
 
-  /**
-   * @param {PromiseRejectionEvent} event
-   */
-  function handleWindowUnhandled (event) {
-    const err = {
-      counter: counter++,
-      message: event.reason.message || event.reason,
-      stack: event.reason.stack
-    }
-
-    system.send({
-      api: 'ssc-node',
-      method: 'testUncaught',
-      arguments: [{
-        err: err,
-        type: 'unhandledrejection'
-      }]
-    })
-  }
-
-  /**
-   * @param  {...any} args
-   */
-  function hookLog (...args) {
-    oldLog.apply(console, args)
-    system.send({
-      api: 'ssc-node',
-      method: 'testConsole',
-      arguments: [{
-        args: JSON.stringify(args)
-      }]
-    })
-  }
+  system.send({
+    api: 'ssc-node',
+    method: 'testUncaught',
+    arguments: [{
+      err: err,
+      type: 'unhandledrejection'
+    }]
+  })
 }
-
