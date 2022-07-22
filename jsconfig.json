@@ -8,10 +8,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "dist"],
   "include": [
     "node_modules/@socketsupply/-base/index.d.ts",
-    "/*.js",
+    "system.d.ts",
+    "*.js",
     "src/**/*.js",
     "src/**/*.d.ts",
     "test/**/*.js"
