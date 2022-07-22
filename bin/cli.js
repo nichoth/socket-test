@@ -3,17 +3,14 @@ const { spawn } = require('node:child_process');
 const run = require('comandante')
 const fs = require('fs')
 const path = require('path')
+const parseConfig = require('../parse-config')
 
 const args = process.argv.slice(2)
 
 const configFile = fs.readFileSync(path.resolve(args[0], 'ssc.config'),
     'utf8')
 
-const config = Object.fromEntries(configFile
-  .split('\n')
-  .filter((line) => line.length && !/^#/.test(line))
-  .map((line) => line.split(/:(.*)$/).map(s => s.trim()))
-)
+const config = parseConfig(configFile)
 
 const sscCmd = spawn('ssc', ['compile', args[0]])
 
