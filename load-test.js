@@ -1,5 +1,6 @@
 function loadTest (getAppContainer) {
-  const isTest = process.argv.includes('--test')
+  const isTest = process.argv.some(item => item.includes('--test'))
+
   if (!isTest) return false
 
   //
