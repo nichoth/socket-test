@@ -2,7 +2,7 @@
 
 How do I test the application I'm making?
 
-There are **two key elements** -- the path you choose for building the tests, and the arugments you call the final application with. You must must build the tests to the right path, and you must call the compiled program with an argument,
+There are **two key elements** -- the path you choose for building the tests, and the arguments you call the final application with. You must must build the tests to the right path, and you must call the compiled program with an argument,
 ```
 --test
 ```
@@ -135,3 +135,14 @@ This is less automated. Since this depends on the build path for the compiled te
 ```
 
 then run `npm run test-cli`, and check the exit code of the last command: `echo $?`. It should print `1`.
+
+
+## API
+
+```js
+const fs = require('fs')
+const parseConfig = require('@nichoth/socket-test/parse-config)
+const config = fs.readFileSync('./ssc.config')
+
+const conf = parseConfig(config)
+```

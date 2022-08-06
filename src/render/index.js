@@ -11,6 +11,8 @@ let elementDraggingIndicator
 let elementUnderDrag
 let lastElementUnderDrag
 
+const { system } = window
+
 window.addEventListener('contextmenu', e => {
   if (!process.debug) {
     e.preventDefault()
