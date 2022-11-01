@@ -30,9 +30,12 @@ sscCmd.on('exit', () => {
     // TODO -- can use ssc command to print the dir instead of constructing
     //   a string like we are doing here
 
-    const exeName = config.executable
-    
-    run('./dist/TestExample-dev.app/Contents/' + dir + '/' + exeName + '-dev',
-        ['--test'])
+    // const exeName = config.executable
+
+    run('ssc', ['run', '--test', '.'])
         .pipe(process.stdout)
+    
+    // run('./dist/TestExample-dev.app/Contents/' + dir + '/' + exeName + '-dev',
+    //     ['--test'])
+    //     .pipe(process.stdout)
 })

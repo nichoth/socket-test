@@ -317,7 +317,7 @@ window.onload = () => {
   // must do this to run tests
   // it checks an arg passed in: `--test`
   // sets AppContainer as a global variable on `window`
-  const isTesting = loadTest(() => (new AppContainer()))
+  const isTesting = loadTest(new AppContainer())
 
   // don't need to attach the app in this case
   if (isTesting) return
