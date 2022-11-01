@@ -4,28 +4,30 @@
 const { test } = require('tapzero')
 const Harness = require('../../harness')
 
-test('app-container exists', async (t) => {
-  const harness = await Harness.create()
+let harness
+test('create harness', async t => {
+  harness = await Harness.create()
+})
 
-  try {
-    const container = harness.container
+test('app container', async t => {
+  const container = harness.container
+  t.ok(container, 'the container exists')
+  t.ok(document.body.contains(container), 'AppContainer is in the body')
 
-    t.ok(container, 'the container exists')
-    t.ok(document.body.contains(container), 'AppContainer is in the body')
+  const sendInput = container.querySelector('#send input')
+  t.ok(sendInput, 'the send <input> exists')
 
-    const sendInput = container.querySelector('#send input')
-    t.ok(sendInput, 'the send <input> exists')
+  sendInput.value = 'hello'
+  sendInput.dispatchEvent(new Event('input', { bubbles: true }))
 
-    sendInput.value = 'hello'
-    sendInput.dispatchEvent(new Event('input', { bubbles: true }))
+  await sleep(250)
 
-    await sleep(250)
+  const receiveElem = container.querySelector('#response')
+  t.equal(receiveElem.value, 'hello', 'a response was received over IPC')
+})
 
-    const receiveElem = container.querySelector('#response')
-    t.equal(receiveElem.value, 'hello', 'a response was received over IPC')
-  } finally {
-    await harness.close()
-  }
+test('all done', () => {
+  harness.close()
 })
 
 async function sleep (ms) {
