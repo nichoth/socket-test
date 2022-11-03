@@ -11,10 +11,9 @@
   },
   "scripts": {
     "start": "ssc compile -r .",
-    "test": "./dist/TestExample-dev.app/Contents/MacOS/test-example-dev --test | tap-arc",
+    "test": "./dist/mac/TestExample-dev.app/Contents/MacOS/test-example-dev --test | tap-arc",
     "test-cli": "./bin/cli.js . | tap-arc",
     "build": "ssc compile .",
-    "go": "./dist/TestExample-dev.app/Contents/MacOS/test-example-dev",
     "postversion": "git push && git push --tags && npm publish"
   },
   "devDependencies": {

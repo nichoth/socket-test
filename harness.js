@@ -22,7 +22,6 @@ class TestCommon {
      * and assigned to window
      */
     const AppContainer = Reflect.get(window, 'TEST_AppContainer')
-
     this.container = AppContainer
     this.container.id = 'app-container'
 

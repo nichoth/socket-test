@@ -43,7 +43,7 @@ async function main () {
   const size = await system.getScreenSize()
 
   assert(size.width, 'screen has width')
-  assert(size.height, 'screen has width')
+  assert(size.height, 'screen has height')
 
   //
   // ## Example

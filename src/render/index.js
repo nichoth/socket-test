@@ -21,7 +21,6 @@ window.addEventListener('contextmenu', e => {
 
 window.addEventListener('dropout', e => {
   console.log(e.detail)
-  // elementDraggingIndicator.style.display = 'none'
   document.body.removeAttribute('dragging')
 })
 
